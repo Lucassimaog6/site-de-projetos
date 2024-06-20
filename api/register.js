@@ -1,9 +1,12 @@
+import { createClient } from "@libsql/client";
+
+export const turso = createClient({
+    url: "libsql://site-projetos-carlosg2011.turso.io",
+    authToken: "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3MTg4ODk2OTcsImlkIjoiY2FlYTVjNzktZTQxOC00Yjc1LWE2YmItNWEzY2Q5YTE1MDQ2In0.zat1Oah5cRC2JmSBF58sloQ9L7lSaWOJyPxczGQRLPod7_q97ewhYBOIzsVEhr0SrtcticULsFmwlaCVUPfwAw"
+  });
+
 const express = require("express")
 const cors = require("cors")
-const turso = createClient({
-    url: "libsql://games-carlosg2011.turso.io",
-    authToken: "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3MTg3NTIxMzQsImlkIjoiMjQxZWM3ZDQtMjhjZS00NGJlLTljNGItOThkYTQ4NWY2YTU2In0.y5UPRDzL0d6ZJf0F0cg2jB5w_sTL02WTiDoXuQ0ZFts3yKEvq0PnY85d7zP0ogAT3VoyuZ5VlwdKaKQr4h_lBg"
-  });
 
 const app  = express()
 app.use(express.json())

@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "../GitHub/site-de-projetos/api/register.js"
+    "dev": " node api/register.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@libsql/client": "^0.6.2",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "prisma": "^5.15.1"
