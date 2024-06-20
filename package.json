@@ -1,0 +1,17 @@
+{
+  "name": "site-de-projetos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "../GitHub/site-de-projetos/api/register.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "prisma": "^5.15.1"
+  }
+}
