@@ -1,6 +1,9 @@
-import express ,{Request, Response} from 'express';
+import express ,{Request, Response, json} from 'express';
 import cors from 'cors';
 import { db } from './db.config';
+import { Register, Login, Delete } from './controller/user.controller';
+
+
 
 const app = express();
 
@@ -14,26 +17,29 @@ app.get("/", (req: Request, res: Response) => {
 app.post('/register', async (req: Request, res: Response) => {
     const { nome, senha } = req.body;
 
-    if(nome === undefined || senha === undefined){
-        return res.status(400).send("Usuário ou senha não informados");
-    }
-    
-    const result = await db.execute({
-        sql: "SELECT * FROM usuario WHERE nome = ?",
-        args: [nome]
-    });
+    const result = await Register(nome, senha)
 
-    if(result.rows.length > 0) {
-        return res.status(400).send("Usuário já cadastrado");
-    }
+    res.status(result.status).json(result)
+});
 
-    await db.execute({
-        sql: "INSERT INTO usuario (nome, senha ) VALUES (?, ?)",
-        args: [nome, senha]
-    });
-    
 
-    res.status(201).send("Usuário cadastrado com sucesso");
+app.post('/login', async (req: Request, res: Response) => {
+
+    const { nome, senha } = req.body;
+
+    const result = await Login(nome, senha)
+
+    res.status(result.status).json(result)
+});
+
+
+app.post('/delete', async (req: Request, res: Response) => {
+
+    const {id, senha} = req.body;
+
+    const result = await Delete(id, senha)
+
+    res.status(result.status).json(result)
 });
 
 
